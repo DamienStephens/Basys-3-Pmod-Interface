@@ -7,11 +7,14 @@
     
     About: This program is intended to be implemented on the Basys 3 FPGA. 
            Two Pmod boards, PmodACL and PmodGPS, are used to acquire data.
-           
-    This code will be hosted on my GitHub account as a public repo and will 
-    inherit the GNU GPL-3.0 License.
 */
 
+module main(
+    input btn0, btn1, clk, [7:0]sw,
+    output TxD); 
 
-module main();
+// Set up the UART module so the board can transmit data to the computer.
+UART uart(.clk(clk), .btn0(btn0), .btn1(btn1), .sw(sw), .TxD(TxD));
+
+
 endmodule
